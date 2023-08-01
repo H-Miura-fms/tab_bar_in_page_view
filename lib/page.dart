@@ -14,16 +14,15 @@ class _HomePageState extends State<HomePage> {
 
   final List<Tab> tabs = <Tab>[
     const Tab(
-      text: 'One',
+      text: 'A',
     ),
     const Tab(
-      text: "Two",
+      text: "B",
     ),
   ];
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _pageController = PageController(initialPage: _selectedIndex);
   }
@@ -41,16 +40,13 @@ class _HomePageState extends State<HomePage> {
   ];
 
   void _onPageChanged(int index) {
-    print("pre$_selectedIndex, $index");
-    print(_pages);
     if (_selectedIndex > index && _pages.length != 1) return;
-    print("to left");
-    if (index == _pages.length - 1)
+    if (index == _pages.length - 1) {
       _pages.add(DetailScreen(index: _pages.length));
+    }
     setState(() {
       _selectedIndex = index;
     });
-    print(_pages);
   }
 
   @override
@@ -70,16 +66,9 @@ class _HomePageState extends State<HomePage> {
                   preferredSize: const Size(double.infinity, 40.0),
                   child: Container(
                     color: const Color.fromARGB(255, 221, 221, 221),
-                    child: const TabBar(
-                        labelColor: Color.fromARGB(255, 0, 0, 0),
-                        tabs: [
-                          Tab(
-                            text: "A",
-                          ),
-                          Tab(
-                            text: "B",
-                          )
-                        ]),
+                    child: TabBar(
+                        labelColor: const Color.fromARGB(255, 0, 0, 0),
+                        tabs: tabs),
                   ),
                 ),
                 body: Padding(
